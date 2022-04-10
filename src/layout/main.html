@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- head 中 -->
+    <link rel="stylesheet" href="htmljs/css/layui.css">
+</head>
+<body style="margin-left: 10px;margin-right: 10px;margin-top: 20px;">
+<h4>需要提前将app中购物车内容选择好</h4>
+
+<form class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">选择app</label>
+        <div class="layui-input-block">
+            <select id="choose_app" name="city" lay-verify="required">
+                <option value="0">叮咚买菜</option>
+                <option value="1">美团</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">点击停顿</label>
+        <div class="layui-input-block">
+            <input type="text" id="click_sleep" name="title" required lay-verify="required" placeholder="请输入"
+                   autocomplete="off" class="layui-input">
+        </div>
+    </div>
+</form>
+
+<div class="layui-form-item " style="position: absolute;bottom: 200px">
+    <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="sub()">立即提交</button>
+    </div>
+</div>
+<script>
+    //Demo
+    layui.use('form', function () {
+        var form = layui.form;
+    });
+
+    //提交任务。 然后将所有参数保存到配置中。
+    function sub() {
+        let app_number = $("#choose_app").val()
+        let click_sleep = $("#click_sleep").val()
+        window.ec.saveConfig("app_number", app_number);
+        window.ec.saveConfig("click_sleep", click_sleep);
+        window.ec.logd("选择了任务:"+app_number+" 点击时间:"+click_sleep)
+    }
+</script>
+<script src="htmljs/jquery.min.js"></script>
+<script src="htmljs/layui.js"></script>
+<script src="htmljs/inner/user-layui.js"></script>
+</body>
+
+<script>
+</script>
+
+</html>
